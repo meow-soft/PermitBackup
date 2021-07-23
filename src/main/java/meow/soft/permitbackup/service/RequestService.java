@@ -1,2 +1,7 @@
-package meow.soft.permitbackup.service;public class RequestService {
+package meow.soft.permitbackup.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class RequestService {
 }
