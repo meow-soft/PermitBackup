@@ -21,4 +21,10 @@ public class Customer {
     private String Url;
     @Column(nullable = false)
     private Boolean IsActive = false;
+
+    public Customer(String dbName, String url) {
+        DbName = dbName;
+        Url = url;
+        IsActive = true;
+    }
 }
