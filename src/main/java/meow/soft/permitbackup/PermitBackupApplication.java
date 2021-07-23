@@ -11,6 +11,7 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -18,8 +19,11 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class PermitBackupApplication {
     static final String topicExchangeName = "exchange";
-
     static final String queueName = "Permit1";
+    @Value("${mq.username}")
+    private String mqUsername;
+    @Value("${mq.password}")
+    private String mqPassword;
 
     @Bean
     RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory) {
@@ -58,9 +62,9 @@ public class PermitBackupApplication {
     @Bean
     ConnectionFactory connectionFactory() {
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory("elk.rmq2.cloudamqp.com");
-        connectionFactory.setUsername("bztgnhov");
-        connectionFactory.setPassword("CfB-TLQ4ZGmpsQabQVs8-VcYLy9-DpW5");
-        connectionFactory.setVirtualHost("bztgnhov");
+        connectionFactory.setUsername(mqUsername);
+        connectionFactory.setPassword(mqPassword);
+        connectionFactory.setVirtualHost(mqUsername);
         connectionFactory.setRequestedHeartBeat(30);
         connectionFactory.setConnectionTimeout(30000);
         return connectionFactory;
