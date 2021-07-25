@@ -1,15 +1,14 @@
 import './index.css';
+import Navbar from '../Navbar/Navbar';
+import Sidebar from '../Sidebar/Sidebar';
+import Footer from '../Footer/Footer';
 
 function PermitBackupUIApp() {
   return (
     <div>
-      <header>Permit Backup v.{process.env.REACT_APP_VERSION}</header>
-      <main>
-        content here
-      </main>
-      <footer>
-        footer here
-      </footer>
+      <Navbar />
+      <Sidebar />
+      <Footer />
     </div>
   );
 }
