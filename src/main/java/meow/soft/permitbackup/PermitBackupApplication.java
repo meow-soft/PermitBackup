@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Bean;
 public class PermitBackupApplication {
     static final String topicExchangeName = "exchange";
     static final String queueName = "Permit1";
-    @Value("${mq.username}")
+    @Value( "${mq.username}" )
     private String mqUsername;
     @Value("${mq.password}")
     private String mqPassword;
