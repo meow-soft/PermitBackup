@@ -1,14 +1,16 @@
 import './index.css';
 import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
-import Footer from '../Footer/Footer';
+import Page from '../Page/Page';
 
 function PermitBackupUIApp() {
   return (
     <div>
       <Navbar />
-      <Sidebar />
-      <Footer />
+      <div className="container">
+        <Sidebar />
+        <Page />
+      </div>
     </div>
   );
 }

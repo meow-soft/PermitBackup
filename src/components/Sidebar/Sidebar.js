@@ -1,18 +1,29 @@
+import {
+  faDownload,
+  faHome,
+  faServer,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import './Sidebar.css';
 
 const Sidebar = () => {
   return (
-    <div>
+    <div className="sidebar">
       <aside className="sidebarNav">
         <ul className="sidebarNavLinks">
-          <li>link1</li>
-          <li>link2</li>
-          <li>link3</li>
-          <li>link4</li>
-          <li>link5</li>
-          <li>link6</li>
-          <li>link7</li>
+          <li>
+            <FontAwesomeIcon icon={faHome} />
+            Home
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faDownload} />
+            Downloads
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faServer} />
+            Servers
+          </li>
         </ul>
       </aside>
     </div>

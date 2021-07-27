@@ -1,5 +1,11 @@
+.sidebar {
+  flex: 1;
+  background-color: royalblue;
+  height: calc(100vh - 50px);
+}
+
 .sidebarNav {
-  width: 50px;
+  width: 100%;
 }
 
 .sidebarNavLinks {

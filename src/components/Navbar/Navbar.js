@@ -1,5 +1,8 @@
+import { faBell } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import logo from '../../assets/logo.png';
+import User from '../User/User';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -18,9 +21,12 @@ const Navbar = () => {
         </div>
         <div className="navbarLinks">
           <ul className="navbarNav">
-            <li className="navItem">Link1</li>
-            <li className="navItem">Link2</li>
-            <li className="navItem">Link3</li>
+            <li>
+              <FontAwesomeIcon icon={faBell} />
+            </li>
+            <li className="navItem">
+              <User />
+            </li>
           </ul>
         </div>
       </div>
