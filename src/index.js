@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PermitBackupUIApp from './components/App';
+import PermitBackupUIApp from './components/App/App';
 import reportWebVitals from './reportWebVitals';
+import './index.scss';
 
 const APP_ROOT_ID = 'permit-backup-ui-root';
 

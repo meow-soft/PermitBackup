@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import PermitBackupUIApp from './index';
+import PermitBackupUIApp from './App';
 
 test('renders learn react link', () => {
   render(<PermitBackupUIApp />);
