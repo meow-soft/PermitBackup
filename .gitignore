@@ -35,3 +35,5 @@ out/
 
 ### VS Code ###
 .vscode/
+src/main/resources/configDb.trace.db
+src/main/resources/configDb.mv.db
