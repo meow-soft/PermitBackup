@@ -11,7 +11,7 @@ const Navbar = () => {
       <div className={styles.navbar__content}>
         <div className={styles.navbar__title}>
           <h1>
-            <a className={styles.navbar__logo} href="#">
+            <a className={styles.navbar__logo} href="/">
               <img src={logo} className={styles.navbar__logoImage} alt="logo" />
               <span className={styles.navbar__logoText}>
                 Permit Backup v.{process.env.REACT_APP_VERSION}
