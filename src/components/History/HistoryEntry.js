@@ -1,13 +1,13 @@
 import React from 'react';
-import './HistoryEntry.css';
+import styles from './HistoryEntry.module.scss';
 
 const HistoryEntry = ({ text, timestamp }) => {
   return (
-    <div className="historyEntry">
+    <div className={styles.historyEntry}>
       <div className="entryTimestamp">
         {new Date(timestamp).toLocaleString('en-US')}
       </div>
-      <div className="entryText">{text}</div>
+      <div>{text}</div>
     </div>
   );
 };

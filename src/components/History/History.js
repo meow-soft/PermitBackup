@@ -1,6 +1,6 @@
 import React from 'react';
-import './History.css';
 import HistoryEntry from './HistoryEntry';
+import styles from './History.module.scss';
 
 const historyEntries = [
   {
@@ -27,7 +27,7 @@ const historyEntries = [
 
 const History = () => {
   return (
-    <div className="history">
+    <div className={styles.history}>
       {historyEntries.map((entry) => (
         <HistoryEntry key={entry.id} {...entry} />
       ))}

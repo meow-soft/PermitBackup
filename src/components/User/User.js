@@ -1,13 +1,13 @@
 import React from 'react';
-import './User.css';
+import styles from './User.module.scss';
 
 const User = () => {
   return (
-    <a>
+    <a className={styles.user}>
       <img
         src="https://i.pravatar.cc/300"
         alt="user-avatar"
-        className="navAvatar"
+        className={styles.user__avatar}
       />
     </a>
   );

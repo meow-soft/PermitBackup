@@ -5,13 +5,13 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import './Sidebar.css';
+import styles from './Sidebar.module.scss';
 
 const Sidebar = () => {
   return (
-    <div className="sidebar">
-      <aside className="sidebarNav">
-        <ul className="sidebarNavLinks">
+    <div className={styles.sidebar}>
+      <aside className={styles.sidebar__nav}>
+        <ul className={styles.sidebar__navLinks}>
           <li>
             <FontAwesomeIcon icon={faHome} />
             Home

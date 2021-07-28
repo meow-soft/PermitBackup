@@ -1,0 +1,14 @@
+.sidebar {
+  flex: 1;
+  background-color: royalblue;
+  height: calc(100vh - 50px);
+
+  &__nav {
+    width: 100%;
+  }
+
+  &__navLinks {
+    list-style: none;
+    padding-left: 0;
+  }
+}
