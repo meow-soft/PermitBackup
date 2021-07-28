@@ -1,8 +1,8 @@
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import logo from '../../assets/logo.png';
-import User from '../User/User';
+import LogoLink from '../LogoLink/LogoLink';
+import UserLink from '../UserLink/UserLink';
 import styles from './Navbar.module.scss';
 
 const Navbar = () => {
@@ -10,22 +10,15 @@ const Navbar = () => {
     <header className={styles.navbar}>
       <div className={styles.navbar__content}>
         <div className={styles.navbar__title}>
-          <h1>
-            <a className={styles.navbar__logo} href="/">
-              <img src={logo} className={styles.navbar__logoImage} alt="logo" />
-              <span className={styles.navbar__logoText}>
-                Permit Backup v.{process.env.REACT_APP_VERSION}
-              </span>
-            </a>
-          </h1>
+          <LogoLink />
         </div>
         <div className={styles.navbar__links}>
           <ul className={styles.navbar__nav}>
-            <li>
+            <li className={styles.navbar__navItem}>
               <FontAwesomeIcon icon={faBell} />
             </li>
             <li className={styles.navbar__navItem}>
-              <User />
+              <UserLink />
             </li>
           </ul>
         </div>

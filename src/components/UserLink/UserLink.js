@@ -1,13 +1,13 @@
 import React from 'react';
-import styles from './User.module.scss';
+import styles from './UserLink.module.scss';
 
 const User = () => {
   return (
-    <a className={styles.user} href="/user">
+    <a className={styles.userLink} href="/user">
       <img
         src="https://i.pravatar.cc/300"
         alt="user-avatar"
-        className={styles.user__avatar}
+        className={styles.userLink__avatar}
       />
     </a>
   );
