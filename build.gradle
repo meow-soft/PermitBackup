@@ -25,7 +25,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-amqp'
     implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.3'
+<<<<<<< HEAD
     implementation 'org.json:json:20210307'
+=======
+    implementation 'org.json:json:20210307:'
+
+>>>>>>> 8be3ebe8d076341a6bf510b78b08801895ff5517
 
     compileOnly 'org.projectlombok:lombok'
 

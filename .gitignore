@@ -35,5 +35,11 @@ out/
 
 ### VS Code ###
 .vscode/
+<<<<<<< HEAD
 src/main/resources/configDb.trace.db
 src/main/resources/configDb.mv.db
+=======
+
+### MacOS
+.DS_Store
+>>>>>>> 8be3ebe8d076341a6bf510b78b08801895ff5517
