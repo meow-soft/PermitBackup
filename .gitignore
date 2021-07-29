@@ -40,3 +40,4 @@ src/main/resources/configDb.mv.db
 
 ### MacOS
 .DS_Store
+logs/

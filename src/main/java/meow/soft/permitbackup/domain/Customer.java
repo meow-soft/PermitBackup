@@ -14,17 +14,19 @@ import javax.persistence.*;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long Id;
+    private long id;
     @Column(nullable = false)
-    private String DbName;
+    private String dbName;
     @Column(nullable = false)
-    private String Url;
+    private String url;
     @Column(nullable = false)
-    private Boolean IsActive = false;
+    private Boolean isActive = false;
+    @Column
+    private String token;
 
     public Customer(String dbName, String url) {
-        DbName = dbName;
-        Url = url;
-        IsActive = true;
+        this.dbName = dbName;
+        this.url = url;
+        isActive = true;
     }
 }

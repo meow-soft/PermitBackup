@@ -16,13 +16,13 @@ public class Config {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long Id;
     @Column(nullable = false)
-    private String Key;
+    private String key;
     @Column(nullable = false)
-    private String Value;
-    private String Description;
+    private String value;
+    private String description;
 
     public Config(String key, String value) {
-        this.Key = key;
-        this.Value = value;
+        this.key = key;
+        this.value = value;
     }
 }

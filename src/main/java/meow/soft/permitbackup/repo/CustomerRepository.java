@@ -1,7 +1,10 @@
 package meow.soft.permitbackup.repo;
 
 import meow.soft.permitbackup.domain.Customer;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-public interface CustomerRepository extends JpaRepository<Customer, Long> {
+@RepositoryRestResource(collectionResourceRel = "customer", path = "customer")
+public interface CustomerRepository extends PagingAndSortingRepository<Customer, Long> {
+
 }

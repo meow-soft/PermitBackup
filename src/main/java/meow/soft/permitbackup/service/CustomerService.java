@@ -12,11 +12,15 @@ import java.util.List;
 public class CustomerService {
     private final CustomerRepository customerRepository;
 
-    public void addNew(Customer customer) {
+    public Customer getCustomer(Long customerId) {
+        return customerRepository.findById(customerId).orElse(null);
+    }
+
+    public void save(Customer customer) {
         customerRepository.save(customer);
     }
 
-    public List<Customer> getAll() {
-        return customerRepository.findAll();
+    public List<Customer> getAllCustomers() {
+        return (List<Customer>) customerRepository.findAll();
     }
 }
