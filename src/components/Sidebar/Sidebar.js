@@ -3,8 +3,8 @@ import {
   faHome,
   faServer,
 } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import Link from '../Link/Link';
 import styles from './Sidebar.module.scss';
 
 const Sidebar = () => {
@@ -12,18 +12,9 @@ const Sidebar = () => {
     <div className={styles.sidebar}>
       <aside className={styles.sidebar__nav}>
         <ul className={styles.sidebar__navLinks}>
-          <li>
-            <FontAwesomeIcon icon={faHome} />
-            Home
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faDownload} />
-            Downloads
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faServer} />
-            Servers
-          </li>
+          <Link text="Home" icon={faHome} />
+          <Link text="Downloads" icon={faDownload} />
+          <Link text="Servers" icon={faServer} />
         </ul>
       </aside>
     </div>
