@@ -12,9 +12,9 @@ const Sidebar = () => {
     <div className={styles.sidebar}>
       <aside className={styles.sidebar__nav}>
         <ul className={styles.sidebar__navLinks}>
-          <Link text="Home" icon={faHome} />
-          <Link text="Downloads" icon={faDownload} />
-          <Link text="Servers" icon={faServer} />
+          <Link text="Home" to="/home" icon={faHome} />
+          <Link text="Downloads" to="/downloads" icon={faDownload} />
+          <Link text="Servers" to="/servers" icon={faServer} />
         </ul>
       </aside>
     </div>
