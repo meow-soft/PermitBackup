@@ -12,6 +12,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html,
+body,
+#permit-backup-ui-root {
+  height: 100%;
+}
+
 *,
 *:after,
 *:before {
