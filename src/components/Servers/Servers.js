@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import AddServer from './AddServer';
-import Server from './Server';
+import ServerCard from './ServerCard';
 import styles from './Servers.module.scss';
 
 const data = [
@@ -50,7 +50,7 @@ const Servers = () => {
     <div className={styles.servers}>
       <div className={styles.servers__list}>
         {servers.map((server) => (
-          <Server key={server.guid} {...server} />
+          <ServerCard key={server.guid} {...server} />
         ))}
       </div>
       <AddServer onAdd={handleAdd} />
