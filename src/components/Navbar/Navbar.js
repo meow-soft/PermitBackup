@@ -1,7 +1,6 @@
-import { faBell } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import LogoLink from '../LogoLink/LogoLink';
+import NotificationsLink from '../NotificationsLink/NotificationsLink';
 import UserLink from '../UserLink/UserLink';
 import styles from './Navbar.module.scss';
 
@@ -15,7 +14,7 @@ const Navbar = () => {
         <div className={styles.navbar__links}>
           <ul className={styles.navbar__nav}>
             <li className={styles.navbar__navItem}>
-              <FontAwesomeIcon icon={faBell} />
+              <NotificationsLink />
             </li>
             <li className={styles.navbar__navItem}>
               <UserLink />
