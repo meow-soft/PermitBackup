@@ -1,4 +1,4 @@
-import NotificationsLink from '../components/NotificationsLink/NotificationsLink';
+import NotificationsLink from '../../components/NotificationsLink/NotificationsLink';
 
 export default {
   title: 'Components/Header',

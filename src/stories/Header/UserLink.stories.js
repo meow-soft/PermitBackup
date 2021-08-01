@@ -1,4 +1,4 @@
-import UserLink from '../components/UserLink/UserLink';
+import UserLink from '../../components/UserLink/UserLink';
 
 export default {
   title: 'Components/Header',

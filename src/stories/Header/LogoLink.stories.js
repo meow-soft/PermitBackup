@@ -1,4 +1,4 @@
-import LogoLink from '../components/LogoLink/LogoLink';
+import LogoLink from '../../components/LogoLink/LogoLink';
 
 export default {
   title: 'Components/Header',
