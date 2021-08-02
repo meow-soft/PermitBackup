@@ -1,7 +1,7 @@
 import Server from '../../components/Servers/ServerCard';
 
 export default {
-  title: 'Components/ServerPage',
+  title: 'Components/ServerPage/ServerPage',
   component: Server,
 };
 

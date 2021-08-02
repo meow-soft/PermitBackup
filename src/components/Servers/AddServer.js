@@ -18,9 +18,12 @@ const AddServer = ({ onAdd }) => {
   }
 
   return (
-    <div className={styles.addServer}>
-      <button onClick={() => setShowForm(true)}>Add +</button>
-    </div>
+    <button className={styles.addServer} onClick={() => setShowForm(true)}>
+      <div>Add</div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </button>
   );
 };
 
