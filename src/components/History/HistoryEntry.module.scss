@@ -1,3 +1,37 @@
 .historyEntry {
-  margin: 10px 0;
+  display: flex;
+  position: relative;
+
+  &::before {
+    background: #dadee4;
+    content: '';
+    height: 100%;
+    left: 7px;
+    position: absolute;
+    top: 2px;
+    width: 2px;
+    z-index: -1;
+  }
+
+  &:last-child {
+    &::before {
+      background: linear-gradient(#dadee4, #fff);
+    }
+  }
+
+  &__icon {
+    color: #0747a6;
+  }
+
+  &__content {
+    flex: 1 1 auto;
+    padding: 0 0 0 1rem;
+  }
+
+  &__card {
+    margin-bottom: 10px;
+  }
+
+  &__timestamp {
+  }
 }

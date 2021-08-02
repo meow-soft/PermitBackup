@@ -27,11 +27,13 @@ const historyEntries = [
 
 const History = () => {
   return (
-    <div className={styles.history}>
-      {historyEntries.map((entry) => (
-        <HistoryEntry key={entry.id} {...entry} />
-      ))}
-    </div>
+    <section className={styles.history}>
+      <ul className={styles.history__list}>
+        {historyEntries.map((entry) => (
+          <HistoryEntry key={entry.id} {...entry} />
+        ))}
+      </ul>
+    </section>
   );
 };
 
