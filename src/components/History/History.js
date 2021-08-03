@@ -1,35 +1,16 @@
 import React from 'react';
 import HistoryEntry from './HistoryEntry';
 import styles from './History.module.scss';
-
-const historyEntries = [
-  {
-    id: Date.now(),
-    text: 'Alameda backup downloaded.',
-    timestamp: Date.now(),
-  },
-  {
-    id: Date.now() + 1,
-    text: 'Tinley park backup started.',
-    timestamp: Date.now() + 1000,
-  },
-  {
-    id: Date.now() + 2,
-    text: 'Backups cleaned up.',
-    timestamp: Date.now() + 2000,
-  },
-  {
-    id: Date.now() + 3,
-    text: "Wyoming's backup process has failed.",
-    timestamp: Date.now() + 5000,
-  },
-];
+import { useStore } from '../../stores';
+import { observer } from 'mobx-react-lite';
 
 const History = () => {
+  const { timeline } = useStore();
+
   return (
     <section className={styles.history}>
       <ul className={styles.history__list}>
-        {historyEntries.map((entry) => (
+        {timeline.activities.map((entry) => (
           <HistoryEntry key={entry.id} {...entry} />
         ))}
       </ul>
@@ -37,4 +18,4 @@ const History = () => {
   );
 };
 
-export default History;
+export default observer(History);

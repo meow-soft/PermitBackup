@@ -2,13 +2,31 @@ import React from 'react';
 import { render } from 'react-dom';
 import PermitBackupUIApp from './components/App/App';
 import reportWebVitals from './reportWebVitals';
+import { StoreProvider } from './stores/StoreContext';
+import {
+  createServerStore,
+  createTimelineStore,
+  createUserStore,
+} from './stores';
 import './index.scss';
 
 const APP_ROOT_ID = 'permit-backup-ui-root';
 
+const createStores = () => {
+  return {
+    user: createUserStore(),
+    server: createServerStore(),
+    timeline: createTimelineStore(),
+  };
+};
+
+const stores = createStores();
+
 render(
   <React.StrictMode>
-    <PermitBackupUIApp />
+    <StoreProvider store={stores}>
+      <PermitBackupUIApp />
+    </StoreProvider>
   </React.StrictMode>,
   document.getElementById(APP_ROOT_ID)
 );
