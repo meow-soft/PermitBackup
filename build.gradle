@@ -20,12 +20,11 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.3'
-    implementation 'org.springframework.boot:spring-boot-starter-quartz:2.5.3'
     //implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web:2.5.3'
     implementation 'org.springframework.boot:spring-boot-starter-amqp:2.5.3'
     implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.3'
-    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest:2.5.3'
     implementation 'io.springfox:springfox-boot-starter:3.0.0'
     implementation 'io.springfox:springfox-swagger-ui:3.0.0'
     implementation 'org.json:json:20210307'
@@ -34,7 +33,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.20'
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools:2.5.3'
-    runtimeOnly 'com.h2database:h2:1.4.200'
+    runtimeOnly 'com.h2database:h2'
 
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.5.3'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
@@ -42,7 +41,8 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.3'
     testImplementation 'org.springframework.security:spring-security-test:5.5.1'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.3'
-    testImplementation 'org.springframework.amqp:spring-rabbit-test:2.3.9'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.3'
+    testImplementation 'com.h2database:h2'
 }
 
 test {
