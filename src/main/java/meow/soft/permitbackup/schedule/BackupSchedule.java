@@ -18,7 +18,7 @@ public class BackupSchedule {
     private final CustomerService customerService;
     private final RequestService requestService;
 
-    @Scheduled(cron = "0 0 5 ? * * *")
+    @Scheduled(cron = "0 0 5 * * *")
     public void RunBackup() {
         log.info(">>> Run Backup by schedule");
         List<Customer> customers = customerService.getAllCustomers();
