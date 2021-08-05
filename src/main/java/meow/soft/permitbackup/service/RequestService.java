@@ -33,7 +33,6 @@ public class RequestService {
 
     private final CustomerService customerService;
     private final ConfigService configService;
-    //private static final Logger LOGGER = LoggerFactory.getLogger(RequestService.class);
 
     public void getToken(Customer customer) {
         log.info(String.format(">>> GetToken for customer %s", customer.getDbName()));
