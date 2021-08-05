@@ -1,8 +1,8 @@
-import { createApi } from './Requests';
+import { getMethods } from './Methods';
 
-const serversApi = createApi('/customer');
+const methods = getMethods('/customer');
 
 export const Servers = Object.freeze({
-  get: (id) => serversApi.get(`?id=${id}`),
-  add: (server) => serversApi.post('', server),
+  get: (id) => methods.get(`?id=${id}`),
+  add: (server) => methods.post('', server),
 });

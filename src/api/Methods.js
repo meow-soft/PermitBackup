@@ -1,7 +1,7 @@
 const BASE_URL = ''; //'http://localhost:8080/'; //window.location.origin;
 const API_BASE = '';
 
-export const createApi = (path) => {
+export const getMethods = (path) => {
   return {
     /**
      * Fetches resource with GET method.
@@ -23,7 +23,9 @@ export const createApi = (path) => {
       window.fetch(`${BASE_URL}${API_BASE}${path}${url}`, {
         method: 'POST',
         mode: 'cors',
-        'Content-Type': 'application/json; charset=utf-8',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+        },
         body: JSON.stringify(body),
       }),
 
@@ -37,7 +39,9 @@ export const createApi = (path) => {
       window.fetch(`${BASE_URL}${API_BASE}${path}${url}`, {
         method: 'PUT',
         mode: 'cors',
-        'Content-Type': 'application/json; charset=utf-8',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+        },
         body: JSON.stringify(body),
       }),
 
