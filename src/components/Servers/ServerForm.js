@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { Api } from '../../api';
 import styles from './ServerForm.module.scss';
 
 const ServerForm = ({ onCancel, onApply }) => {
   const [host, setHost] = useState('');
   const [name, setName] = useState('');
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
 
   useEffect(() => {
     resetFields();
@@ -18,20 +17,15 @@ const ServerForm = ({ onCancel, onApply }) => {
 
   const handleApply = (e) => {
     e.preventDefault();
-    onApply({
-      guid: Date.now(),
-      host,
-      name,
-      login,
-      password,
-    });
+    Api.Servers.add({
+      dbName: name,
+      url: host,
+    }).catch(console.error);
   };
 
   const resetFields = () => {
     setHost('');
     setName('');
-    setLogin('');
-    setPassword('');
   };
 
   return (
@@ -43,14 +37,6 @@ const ServerForm = ({ onCancel, onApply }) => {
       <div>
         Name
         <input value={name} onChange={(e) => setName(e.target.value)} />
-      </div>
-      <div>
-        Login
-        <input value={login} onChange={(e) => setLogin(e.target.value)} />
-      </div>
-      <div>
-        Password
-        <input value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
       <div>
         <button onClick={handleApply}>Save</button>
