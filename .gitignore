@@ -42,3 +42,4 @@ src/main/resources/configDb.mv.db
 .DS_Store
 logs/
 /node_modules/
+/target/
