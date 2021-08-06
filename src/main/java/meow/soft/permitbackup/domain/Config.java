@@ -6,7 +6,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Table
 @Entity
 @Setter
 @Getter
@@ -14,15 +13,10 @@ import javax.persistence.*;
 public class Config {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long Id;
-    @Column(nullable = false)
+    private Long id;
+//    @Column(nullable = false)
     private String key;
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private String value;
     private String description;
-
-    public Config(String key, String value) {
-        this.key = key;
-        this.value = value;
-    }
 }

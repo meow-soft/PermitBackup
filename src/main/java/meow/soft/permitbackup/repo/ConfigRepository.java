@@ -9,3 +9,5 @@ public interface ConfigRepository extends PagingAndSortingRepository<Config, Lon
     Config findByKey(String key);
 
 }
+
+

@@ -49,7 +49,16 @@ public class RequestService {
             return;
         }
         HttpEntity<String> requestEntity = new HttpEntity<>(json.toString(), headers);
-        ResponseEntity<String> responseEntity = rest.exchange(url + MVC_PUBLIC_AUTH_LOGON, HttpMethod.POST, requestEntity, String.class);
+        ResponseEntity<String> responseEntity;
+        try {
+            responseEntity = rest.exchange(url + MVC_PUBLIC_AUTH_LOGON, HttpMethod.POST, requestEntity, String.class);
+        }
+        catch (Exception e) {
+            log.error("Error on send request.", e);
+            log.info("<<< GetToken");
+            return;
+        }
+
         JSONObject jo = new JSONObject(responseEntity.getBody());
         String token = jo.get("AuthToken").toString();
         customer.setToken(token);
