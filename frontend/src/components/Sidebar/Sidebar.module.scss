@@ -1,0 +1,32 @@
+.sidebar {
+  flex: 1;
+  color: rgb(222, 235, 255);
+  background-color: rgb(7, 71, 166);
+
+  &__nav {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__navLinks {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  &__navItem {
+    cursor: pointer;
+    height: 42px;
+    line-height: 42px;
+    padding-left: 0.75rem;
+    font-size: 14px;
+
+    &:hover {
+      border-radius: 3px;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  &__navItemIcon {
+    margin-right: 10px;
+  }
+}
