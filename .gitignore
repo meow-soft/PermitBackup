@@ -43,6 +43,7 @@ src/main/resources/configDb.mv.db
 logs/
 /node_modules/
 /target/
+
 # Dependencies
 /node_modules
 /.pnp

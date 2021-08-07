@@ -1,58 +1,29 @@
-plugins {
-    id 'org.springframework.boot' version '2.5.3'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'java'
-}
+version '0.0.1'
 
-group = 'meow.soft'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+subprojects {
 
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
+    // we only want to address the java projects here
+    if (it.name != 'frontend') {
+        buildscript {
+            repositories {
+                mavenLocal()
+                mavenCentral()
+                maven {
+                    url "https://plugins.gradle.org/m2/"
+                }
+            }
+
+            dependencies {
+                classpath "org.springframework.boot:spring-boot-gradle-plugin:2.5.3"
+                classpath "com.moowork.gradle:gradle-node-plugin:1.1.1"
+            }
+        }
+
+        repositories {
+            mavenCentral()
+            mavenLocal()
+        }
+
     }
-}
 
-repositories {
-    mavenCentral()
-    //maven { url "https://maven.vaadin.com/vaadin-addons" }
-}
-
-dependencyManagement {
-    imports {
-        //mavenBom 'com.vaadin:vaadin-bom:14.6.7'
-
-    }
-}
-
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.3'
-    //implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.3'
-    implementation 'org.springframework.boot:spring-boot-starter-amqp:2.5.3'
-    implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.3'
-    implementation 'org.springframework.boot:spring-boot-starter-data-rest:2.5.3'
-    implementation 'io.springfox:springfox-boot-starter:3.0.0'
-    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
-    implementation 'org.json:json:20210307'
-    implementation 'commons-io:commons-io:2.11.0'
-    //implementation 'com.vaadin:vaadin-spring-boot-starter'
-
-    compileOnly 'org.projectlombok:lombok:1.18.20'
-
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'com.h2database:h2'
-
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.5.3'
-    annotationProcessor 'org.projectlombok:lombok:1.18.20'
-
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.security:spring-security-test'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'com.h2database:h2'
-}
-
-test {
-    useJUnitPlatform()
 }

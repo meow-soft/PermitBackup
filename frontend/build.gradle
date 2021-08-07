@@ -1,0 +1,52 @@
+plugins {
+    id 'com.github.node-gradle.node' version '3.1.0'
+}
+
+apply plugin: 'base'
+apply plugin: "com.github.node-gradle.node"
+
+node {
+    version = '16.6.0'
+    download = true
+}
+
+task bundle(type: NpmTask, dependsOn: npmInstall) {
+    args = ['run', 'build']
+}
+
+/*
+task test(type: NpmTask) {
+    environment = ['CI': 'true']
+    args = ['run', 'test']
+}
+
+task run(type: NpmTask) {
+    args = ['start']
+}
+
+
+check.dependsOn(test)
+
+ */
+assemble.dependsOn(bundle)
+
+/*
+task build(type: NpmTask) {
+  args = ['run', 'build']
+}
+build.dependsOn(npm_install)
+
+
+task clean(type: Delete){
+  delete "build"
+}
+
+
+task cleanAll(type: Delete){
+  delete "build"
+  delete "node_modules"
+  delete ".gradle"
+}
+cleanAll.dependsOn(clean)
+
+*/

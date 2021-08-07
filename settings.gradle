@@ -1,1 +1,4 @@
 rootProject.name = 'PermitBackup'
+
+include 'backend'
+include 'frontend'
