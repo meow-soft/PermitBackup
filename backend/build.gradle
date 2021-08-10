@@ -2,6 +2,11 @@ plugins {
     id 'org.springframework.boot' version '2.5.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'application'
+}
+
+application {
+    mainClass = 'meow.soft.permitbackup.PermitBackupApplication'
 }
 
 group = 'meow.soft'
