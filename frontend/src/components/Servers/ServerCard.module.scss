@@ -1,9 +1,13 @@
 .serverCard {
+  background: var(--background-card);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px #e4e1e1;
+  margin: 0 0 0.75rem 0.75rem;
+
   &__content {
-    background: var(--background-card);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px #e4e1e1;
-    margin: 0 0 0.75rem 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 0.75rem;
   }
 }

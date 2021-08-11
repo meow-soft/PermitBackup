@@ -19,8 +19,8 @@ export const getMethods = (path) => {
      * @param {BodyInit} body
      * @returns {Promise<Response>}
      */
-    post: (url = '', body) =>
-      window.fetch(`${BASE_URL}${API_BASE}${path}${url}`, {
+    post: (url, body) =>
+      window.fetch(url, {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -36,7 +36,7 @@ export const getMethods = (path) => {
      * @returns {Promise<Response>}
      */
     put: (url, body) =>
-      window.fetch(`${BASE_URL}${API_BASE}${path}${url}`, {
+      window.fetch(url, {
         method: 'PUT',
         mode: 'cors',
         headers: {
@@ -51,7 +51,7 @@ export const getMethods = (path) => {
      * @returns {Promise<Response>}
      */
     del: (url) =>
-      window.fetch(`${BASE_URL}${API_BASE}${path}${url}`, {
+      window.fetch(url, {
         method: 'DELETE',
       }),
   };

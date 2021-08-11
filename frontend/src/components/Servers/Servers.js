@@ -16,7 +16,7 @@ const Servers = () => {
     <div className={styles.servers}>
       <div className={styles.servers__list}>
         {serverStore.servers.map((server) => (
-          <ServerCard key={server.dbName} {...server} />
+          <ServerCard key={server.dbName} server={server} />
         ))}
       </div>
       <AddServer />

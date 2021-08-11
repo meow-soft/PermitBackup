@@ -10,7 +10,7 @@ const AddServer = () => {
 
   const handleCreate = (server) => {
     serverStore
-      .createServer(server)
+      .create(server)
       .then(() => setShowForm(false))
       .catch(console.error);
   };
