@@ -8,7 +8,7 @@ export const getMethods = (path) => {
      * @param {String} url
      * @returns {Promise<Response>}
      */
-    get: (url) =>
+    get: (url = '') =>
       window.fetch(`${BASE_URL}${API_BASE}${path}${url}`, {
         method: 'GET',
       }),
@@ -19,7 +19,7 @@ export const getMethods = (path) => {
      * @param {BodyInit} body
      * @returns {Promise<Response>}
      */
-    post: (url, body) =>
+    post: (url = '', body) =>
       window.fetch(`${BASE_URL}${API_BASE}${path}${url}`, {
         method: 'POST',
         mode: 'cors',

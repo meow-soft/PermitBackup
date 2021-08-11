@@ -1,14 +1,13 @@
 import React from 'react';
 import styles from './ServerCard.module.scss';
 
-const Server = ({ host, name, login, password }) => {
+const Server = ({ dbName, url, isActive }) => {
   return (
     <div className={styles.serverCard}>
       <div className={styles.serverCard__content}>
-        <div>{host}</div>
-        <div>{name}</div>
-        <div>{login}</div>
-        <div>{password}</div>
+        <div>Db Name: {dbName}</div>
+        <div>Url: {url}</div>
+        <div>Active: {isActive ? 'Yes' : 'No'}</div>
       </div>
     </div>
   );

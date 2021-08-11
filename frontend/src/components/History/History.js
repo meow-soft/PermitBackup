@@ -5,12 +5,12 @@ import { useStore } from '../../stores';
 import { observer } from 'mobx-react-lite';
 
 const History = () => {
-  const { timeline } = useStore();
+  const { timelineStore } = useStore();
 
   return (
     <section className={styles.history}>
       <ul className={styles.history__list}>
-        {timeline.activities.map((entry) => (
+        {timelineStore.activities.map((entry) => (
           <HistoryEntry key={entry.id} {...entry} />
         ))}
       </ul>

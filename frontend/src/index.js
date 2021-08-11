@@ -14,9 +14,9 @@ const APP_ROOT_ID = 'permit-backup-ui-root';
 
 const createStores = () => {
   return {
-    user: createUserStore(),
-    server: createServerStore(),
-    timeline: createTimelineStore(),
+    userStore: createUserStore(),
+    serverStore: createServerStore(),
+    timelineStore: createTimelineStore(),
   };
 };
 

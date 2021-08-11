@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Api } from '../../api';
 import styles from './ServerForm.module.scss';
 
 const ServerForm = ({ onCancel, onApply }) => {
-  const [host, setHost] = useState('');
-  const [name, setName] = useState('');
+  const [dbName, setDbName] = useState('');
+  const [url, setUrl] = useState('');
 
   useEffect(() => {
     resetFields();
@@ -17,26 +16,26 @@ const ServerForm = ({ onCancel, onApply }) => {
 
   const handleApply = (e) => {
     e.preventDefault();
-    Api.Servers.add({
-      dbName: name,
-      url: host,
-    }).catch(console.error);
+    onApply({
+      dbName,
+      url,
+    });
   };
 
   const resetFields = () => {
-    setHost('');
-    setName('');
+    setDbName('');
+    setUrl('');
   };
 
   return (
     <form className={styles.serverForm}>
       <div>
-        Host
-        <input value={host} onChange={(e) => setHost(e.target.value)} />
+        DB Name
+        <input value={dbName} onChange={(e) => setDbName(e.target.value)} />
       </div>
       <div>
-        Name
-        <input value={name} onChange={(e) => setName(e.target.value)} />
+        Url
+        <input value={url} onChange={(e) => setUrl(e.target.value)} />
       </div>
       <div>
         <button onClick={handleApply}>Save</button>
