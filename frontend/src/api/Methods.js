@@ -1,5 +1,4 @@
-const BASE_URL = ''; //'http://localhost:8080/'; //window.location.origin;
-const API_BASE = '';
+const API_BASE = 'api';
 
 export const getMethods = (path) => {
   return {
@@ -9,7 +8,7 @@ export const getMethods = (path) => {
      * @returns {Promise<Response>}
      */
     get: (url = '') =>
-      window.fetch(`${BASE_URL}${API_BASE}${path}${url}`, {
+      window.fetch(`${API_BASE}${path}${url}`, {
         method: 'GET',
       }),
 
