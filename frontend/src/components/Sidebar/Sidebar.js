@@ -1,4 +1,5 @@
 import {
+  faClock,
   faDownload,
   faHome,
   faServer,
@@ -14,6 +15,7 @@ const Sidebar = () => {
         <ul className={styles.sidebar__navLinks}>
           <Link text="Home" to="/home" icon={faHome} />
           <Link text="Downloads" to="/downloads" icon={faDownload} />
+          <Link text="Scheduler" to="/scheduler" icon={faClock} />
           <Link text="Servers" to="/servers" icon={faServer} />
         </ul>
       </aside>
