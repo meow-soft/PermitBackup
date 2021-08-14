@@ -4,6 +4,7 @@ import styles from './ServerForm.module.scss';
 const ServerForm = ({ onCancel, onApply }) => {
   const [dbName, setDbName] = useState('');
   const [url, setUrl] = useState('');
+  const [isActive, setActive] = useState(false);
 
   useEffect(() => {
     resetFields();
@@ -19,12 +20,14 @@ const ServerForm = ({ onCancel, onApply }) => {
     onApply({
       dbName,
       url,
+      isActive,
     });
   };
 
   const resetFields = () => {
     setDbName('');
     setUrl('');
+    setActive(false);
   };
 
   return (
@@ -36,6 +39,14 @@ const ServerForm = ({ onCancel, onApply }) => {
       <div>
         Url
         <input value={url} onChange={(e) => setUrl(e.target.value)} />
+      </div>
+      <div>
+        Active
+        <input
+          type="checkbox"
+          checked={isActive}
+          onChange={(e) => setActive(e.target.checked)}
+        />
       </div>
       <div>
         <button onClick={handleApply}>Save</button>
