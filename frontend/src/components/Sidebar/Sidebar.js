@@ -1,5 +1,6 @@
 import {
   faClock,
+  faCogs,
   faDownload,
   faHome,
   faServer,
@@ -17,6 +18,7 @@ const Sidebar = () => {
           <Link text="Downloads" to="/downloads" icon={faDownload} />
           <Link text="Scheduler" to="/scheduler" icon={faClock} />
           <Link text="Servers" to="/servers" icon={faServer} />
+          <Link text="Settings" to="/settings" icon={faCogs} />
         </ul>
       </aside>
     </div>

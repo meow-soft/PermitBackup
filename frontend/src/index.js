@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import { StoreProvider } from './stores/StoreContext';
 import {
   createServerStore,
+  createSettingsStore,
   createTimelineStore,
   createUserStore,
 } from './stores';
@@ -17,6 +18,7 @@ const createStores = () => {
     userStore: createUserStore(),
     serverStore: createServerStore(),
     timelineStore: createTimelineStore(),
+    settingsStore: createSettingsStore(),
   };
 };
 

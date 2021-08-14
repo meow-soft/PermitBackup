@@ -5,6 +5,7 @@ import Home from '../Home/Home';
 import Notifications from '../Notifications/Notifications';
 import Scheduler from '../Scheduler/Scheduler';
 import Servers from '../Servers/Servers';
+import Settings from '../Settings/Settings';
 import User from '../User/User';
 import styles from './Page.module.scss';
 
@@ -18,6 +19,7 @@ const Page = () => {
         <Route path="/servers" component={Servers} />
         <Route path="/user" component={User} />
         <Route path="/notifications" component={Notifications} />
+        <Route path="/settings" component={Settings} />
         <Redirect to="/home" />
       </Switch>
     </section>
