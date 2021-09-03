@@ -11,7 +11,7 @@ public class StatsService {
         File file = new File("/");
         long total = file.getTotalSpace();
         long free = file.getFreeSpace();
-        long used = file.getUsableSpace();
+        long used = total - free;
         return new StorageStats(total, free, used);
     }
 }

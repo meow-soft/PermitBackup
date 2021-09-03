@@ -1,7 +1,10 @@
+import { faDatabase } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
 import { useStore } from '../../stores';
-import style from './StorageStats.module.scss';
+import ProgressBar from '../ProgressBar/ProgressBar';
+import styles from './StorageStats.module.scss';
 
 const StorageStats = () => {
   const { storageStore } = useStore();
@@ -11,10 +14,9 @@ const StorageStats = () => {
   }, [storageStore]);
 
   return (
-    <div className={style.storageStats}>
-      <div>Total: {storageStore.totalSpace}</div>
-      <div>Free: {storageStore.freeSpace}</div>
-      <div>Used: {storageStore.usedSpace}</div>
+    <div className={styles.storageStats}>
+      <FontAwesomeIcon icon={faDatabase} /> Space usage
+      <ProgressBar value={storageStore.usedPercent} />
     </div>
   );
 };

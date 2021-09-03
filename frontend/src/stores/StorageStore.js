@@ -1,12 +1,12 @@
-import { action, makeObservable, observable } from 'mobx';
+import { action, computed, makeObservable, observable } from 'mobx';
 import { Api } from '../api';
 
 class StorageStore {
-  totalSpace = null;
+  totalSpace = 0;
 
-  usedSpace = null;
+  usedSpace = 0;
 
-  freeSpace = null;
+  freeSpace = 0;
 
   constructor() {
     makeObservable(this, {
@@ -16,6 +16,7 @@ class StorageStore {
       setUsedSpace: action,
       freeSpace: observable,
       setFreeSpace: action,
+      usedPercent: computed,
     });
   }
 
@@ -37,6 +38,10 @@ class StorageStore {
 
   setFreeSpace(freeSpace) {
     this.freeSpace = freeSpace;
+  }
+
+  get usedPercent() {
+    return this.usedSpace / (this.totalSpace / 100);
   }
 }
 
