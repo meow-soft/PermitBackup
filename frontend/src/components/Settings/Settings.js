@@ -8,7 +8,7 @@ const Settings = () => {
 
   useEffect(() => {
     settingsStore.load().catch(console.error);
-  }, []);
+  }, [settingsStore]);
 
   const handleSave = (e) => {
     e.preventDefault();
