@@ -8,6 +8,7 @@ import {
   createSettingsStore,
   createTimelineStore,
   createUserStore,
+  createStorageStore,
 } from './stores';
 import './index.scss';
 
@@ -19,6 +20,7 @@ const createStores = () => {
     serverStore: createServerStore(),
     timelineStore: createTimelineStore(),
     settingsStore: createSettingsStore(),
+    storageStore: createStorageStore(),
   };
 };
 

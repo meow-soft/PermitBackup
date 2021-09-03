@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import Link from '../Link/Link';
+import StorageStats from '../StorageStats/StorageStats';
 import styles from './Sidebar.module.scss';
 
 const Sidebar = () => {
@@ -20,6 +21,7 @@ const Sidebar = () => {
           <Link text="Servers" to="/servers" icon={faServer} />
           <Link text="Settings" to="/settings" icon={faCogs} />
         </ul>
+        <StorageStats />
       </aside>
     </div>
   );
