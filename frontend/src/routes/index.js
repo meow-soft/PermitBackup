@@ -1,4 +1,4 @@
-import Login from '../pages/Login';
+import Login from '../pages/Login/Login';
 
 export const routeNames = Object.freeze({
   LOGIN: '/login',

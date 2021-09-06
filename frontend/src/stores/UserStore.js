@@ -3,7 +3,7 @@ import { action, makeObservable, observable } from 'mobx';
 class UserStore {
   id = null;
 
-  isAuth = false;
+  isAuth = true;
 
   constructor() {
     makeObservable(this, {
