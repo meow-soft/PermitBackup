@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import meow.soft.permitbackup.domain.Customer;
 import meow.soft.permitbackup.service.CustomerService;
 import meow.soft.permitbackup.service.RequestService;
+import org.json.JSONException;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +26,13 @@ public class BackupSchedule {
         if (customers != null) {
             for (Customer customer : customers) {
                 if (customer != null && customer.getIsActive()) {
-                    requestService.RequestForCreateBackup(customer);
+                    try {
+                        requestService.RequestForCreateBackup(customer);
+                    }
+                    catch (JSONException e) {
+                        log.error("Error on create backup", e);
+                    }
+
                 }
             }
         }

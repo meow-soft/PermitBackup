@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.Objects;
 
@@ -23,8 +24,9 @@ public class RequestService {
 
     public static final String API_REMOTE_BACKUP_GET = "/api/RemoteBackup/Get";
     public static final String API_REMOTE_BACKUP_CREATE_BACKUP_MQ = "/api/RemoteBackup/CreateBackupMq";
-    public static final String MVC_PUBLIC_AUTH_LOGON = "/mvc/Public/auth/Logon";
+    public static final String MVC_PUBLIC_AUTH_LOGON = "/api/Auth/v1/login";
     private static final String SAVE_FOLDER_KEY = "saveFolder";
+    public static final String UTF8_BOM = "\uFEFF";
 
     @Value("${permit.username}")
     private String login;
@@ -59,8 +61,10 @@ public class RequestService {
             return;
         }
 
-        JSONObject jo = new JSONObject(responseEntity.getBody());
-        String token = jo.get("AuthToken").toString();
+        String body = removeUTF8BOM(responseEntity.getBody());
+        System.out.println(body);
+        JSONObject jo = new JSONObject(body.trim());
+        String token = jo.get("authToken").toString();
         customer.setToken(token);
         customerService.save(customer);
         log.info("<<< GetToken");
@@ -127,5 +131,14 @@ public class RequestService {
             log.error("Error on get file.", e);
         }
         log.info("<<< getFile");
+    }
+
+
+
+    private static String removeUTF8BOM(String s) {
+        if (s.startsWith(UTF8_BOM)) {
+            s = s.substring(1);
+        }
+        return s;
     }
 }
