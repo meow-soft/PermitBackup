@@ -1,8 +1,8 @@
 import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
 import { useStore } from '../../stores';
-import AddServer from './AddServer';
-import ServerCard from './ServerCard';
+import AddServer from '../../components/Servers/AddServer';
+import ServerCard from '../../components/Servers/ServerCard';
 import styles from './Servers.module.scss';
 
 const Servers = () => {

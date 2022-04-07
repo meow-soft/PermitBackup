@@ -2,6 +2,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useStore } from '../../stores';
+import cn from 'classnames';
 import styles from './ServerCard.module.scss';
 
 const Server = ({ server }) => {
@@ -11,13 +12,16 @@ const Server = ({ server }) => {
     serverStore.delete(server).catch(console.error);
   };
 
+  const cardClasses = cn(styles.serverCard, {
+    [styles['serverCard--on']]: server.isActive,
+  });
+
   return (
-    <div className={styles.serverCard}>
+    <div className={cardClasses}>
       <div className={styles.serverCard__content}>
         <div>
           <div>DB Name: {server.dbName}</div>
           <div>Url: {server.url}</div>
-          <div>Active: {server.isActive ? 'Yes' : 'No'}</div>
         </div>
         <FontAwesomeIcon icon={faTrash} onClick={handleDelete} />
       </div>

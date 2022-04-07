@@ -4,8 +4,16 @@ import Page from '../Page/Page';
 import History from '../History/History';
 import styles from './App.module.scss';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { useStore } from '../../stores';
+import Login from '../../pages/Login/Login';
 
 function PermitBackupUIApp() {
+  const { userStore } = useStore();
+
+  if (!userStore.isAuth) {
+    return <Login />;
+  }
+
   return (
     <div className={styles.app}>
       <Router>

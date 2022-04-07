@@ -1,12 +1,12 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import Downloads from '../Downloads/Downloads';
-import Home from '../Home/Home';
+import Downloads from '../../pages/Downloads/Downloads';
+import Home from '../../pages/Home/Home';
 import Notifications from '../Notifications/Notifications';
-import Scheduler from '../Scheduler/Scheduler';
-import Servers from '../Servers/Servers';
-import Settings from '../Settings/Settings';
-import User from '../User/User';
+import Scheduler from '../../pages/Scheduler/Scheduler';
+import Servers from '../../pages/Servers/Servers';
+import Settings from '../../pages/Settings/Settings';
+import User from '../../pages/User/User';
 import styles from './Page.module.scss';
 
 const Page = () => {

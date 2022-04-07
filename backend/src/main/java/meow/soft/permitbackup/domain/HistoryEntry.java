@@ -20,9 +20,9 @@ public class HistoryEntry {
     private String Text;
     @Column(nullable = false)
 
-    private Long Timestamp;
+    private long Timestamp;
 
-    public HistoryEntry(String text, Long timestamp) {
+    public HistoryEntry(String text, long timestamp) {
         this.Text = text;
         this.Timestamp = timestamp;
     }
