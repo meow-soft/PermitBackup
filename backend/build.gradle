@@ -79,3 +79,9 @@ task copyFrontend(type: Copy) {
   */
 copyFrontend.dependsOn(':frontend:build')
 processResources.dependsOn(copyFrontend)
+
+bootJar {
+    mainClassName = 'meow.soft.permitbackup.PermitBackupApplication'
+}
+
+archivesBaseName = 'PermitBackupService'

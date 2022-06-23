@@ -9,10 +9,13 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.Collections;
 import java.util.Objects;
 
@@ -78,6 +81,8 @@ public class RequestService {
             getToken(customer);
         }
 
+
+
         RestTemplate rest = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json");
@@ -115,17 +120,19 @@ public class RequestService {
 
         try {
             log.info(String.format("Send request on %s", url));
-            ResponseEntity<byte[]> response = restTemplate.exchange(url, HttpMethod.GET, entity, byte[].class, "1");
-            log.debug(String.format("Response: %s", response));
-            if (response.getStatusCode().equals(HttpStatus.OK)) {
-                byte[] bFile = response.getBody();
-                String destFileName = response.getHeaders().getContentDisposition().getFilename();
-                savePath = FilenameUtils.concat(savePath, destFileName);
-                log.info(String.format("Destination file path: %s", savePath));
-                FileUtils.writeByteArrayToFile(new File(savePath), Objects.requireNonNull(bFile));
+            File execute = restTemplate.execute(url, HttpMethod.GET, null, clientHttpResponse -> {
+                String destFileName = clientHttpResponse.getHeaders().getContentDisposition().getFilename();
+                String concat = FilenameUtils.concat(savePath, destFileName);
+                log.info(String.format("Destination file path: %s", concat));
+                File ret = new File(concat);
+                StreamUtils.copy(clientHttpResponse.getBody(), Files.newOutputStream(ret.toPath()));
+                return ret;
+            });
+            if (execute != null && execute.exists()) {
                 log.info("File successfully saved!");
-                customer.setToken(null);
-                customerService.save(customer);
+            }
+            else {
+                log.error("FILE NOT SAVED");
             }
         } catch (Exception e) {
             log.error("Error on get file.", e);

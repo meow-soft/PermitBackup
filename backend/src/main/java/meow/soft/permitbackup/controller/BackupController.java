@@ -22,7 +22,9 @@ public class BackupController {
         List<Customer> customers = customerService.getAllCustomers();
         if (customers != null) {
             for (Customer customer : customers) {
-                requestService.RequestForCreateBackup(customer);
+                if (customer.getIsActive()) {
+                    requestService.RequestForCreateBackup(customer);
+                }
             }
         }
         return "test1";

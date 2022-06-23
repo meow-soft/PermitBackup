@@ -27,6 +27,7 @@ public class BackupSchedule {
             for (Customer customer : customers) {
                 if (customer != null && customer.getIsActive()) {
                     try {
+                        log.info("Customer: {}", customer);
                         requestService.RequestForCreateBackup(customer);
                     }
                     catch (JSONException e) {
