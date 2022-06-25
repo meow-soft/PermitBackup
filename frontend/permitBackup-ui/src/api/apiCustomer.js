@@ -17,4 +17,4 @@ class ApiCustomer {
     }
 }
 
-export default ApiCustomer();
+export default new ApiCustomer();
