@@ -1,41 +1,41 @@
-plugins {
-    id 'org.springframework.boot' version '2.5.3'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'java'
-    id 'application'
+buildscript {
+    ext {
+        springBootVersion = '2.7.1'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
+
+plugins {
+    id "com.moowork.node" version "1.3.1"
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
 
 group = 'meow.soft'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
 
 repositories {
     mavenCentral()
-    //maven { url "https://maven.vaadin.com/vaadin-addons" }
-}
-
-dependencyManagement {
-    imports {
-        //mavenBom 'com.vaadin:vaadin-bom:14.6.7'
-
-    }
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.0'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     //implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.7.0'
-    implementation 'org.springframework.boot:spring-boot-starter-amqp:2.7.0'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
     implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
-    implementation 'org.springframework.boot:spring-boot-starter-data-rest:2.7.0'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'io.springfox:springfox-boot-starter:3.0.0'
     implementation 'io.springfox:springfox-swagger-ui:3.0.0'
     implementation 'org.json:json:20220320'
@@ -47,7 +47,7 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.h2database:h2'
 
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.7.0'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -56,9 +56,5 @@ dependencies {
     testImplementation 'com.h2database:h2'
 }
 
-
-bootJar {
-    mainClassName = 'meow.soft.permitbackup.PermitBackupApplication'
-}
 
 archivesBaseName = 'PermitBackupService'
