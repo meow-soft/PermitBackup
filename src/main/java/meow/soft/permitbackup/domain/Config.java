@@ -12,11 +12,13 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Config {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 //    @Column(nullable = false)
+    @Column(name = "config_key")
     private String key;
 //    @Column(nullable = false)
+    @Column(name = "config_value")
     private String value;
     private String description;
 }
