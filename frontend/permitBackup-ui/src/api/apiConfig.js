@@ -6,7 +6,7 @@ class ApiConfig {
     }
 
     get(id) {
-        return apiHelper.get('/config/${id}')
+        return apiHelper.get(`/config/${id}`)
     }
 
     create(data) {

@@ -51,7 +51,8 @@ export default {
     saveCustomer() {
       var data = {
         dbName: this.customer.dbName,
-        url: this.customer.url
+        url: this.customer.url,
+        isActive: true
       };
       apiCustomer.create(data)
           .then(response => {

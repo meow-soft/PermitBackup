@@ -26,7 +26,7 @@ public abstract class GenericController<T extends GenericEntity<T>> {
         return ResponseEntity.ok(service.get(id));
     }
 
-    @PutMapping("")
+    @PutMapping("/{id}")
     public ResponseEntity<T> update(@RequestBody T updated){
         return ResponseEntity.ok(service.update(updated));
     }
