@@ -64,7 +64,7 @@ export default {
     retrieveCustomers() {
       apiCustomer.getAll()
           .then(response => {
-            this.customers = response.data;
+            this.customers = response.data.content;
             console.log(response.data);
           })
           .catch(e => {
