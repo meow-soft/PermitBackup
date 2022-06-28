@@ -7,12 +7,19 @@ import org.apache.commons.io.FilenameUtils;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
+import org.springframework.http.client.ClientHttpRequest;
+import org.springframework.http.client.ClientHttpRequestExecution;
+import org.springframework.http.client.ClientHttpRequestInterceptor;
+import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StreamUtils;
+import org.springframework.web.client.RequestCallback;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Collections;
 
 
@@ -53,8 +60,7 @@ public class RequestService {
         ResponseEntity<String> responseEntity;
         try {
             responseEntity = rest.exchange(url + MVC_PUBLIC_AUTH_LOGON, HttpMethod.POST, requestEntity, String.class);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             log.error("Error on send request.", e);
             log.info("<<< GetToken");
             return;
@@ -76,7 +82,6 @@ public class RequestService {
         if (customer.getToken() == null || customer.getToken().isEmpty()) {
             getToken(customer);
         }
-
 
 
         RestTemplate rest = new RestTemplate();
@@ -108,15 +113,13 @@ public class RequestService {
             return;
         }
         String url = customer.getUrl() + API_REMOTE_BACKUP_GET + "/" + filenameB64;
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_OCTET_STREAM));
-        headers.add(HttpHeaders.AUTHORIZATION, "Bearer " + customer.getToken());
-        HttpEntity<String> entity = new HttpEntity<>(headers);
+
         RestTemplate restTemplate = new RestTemplate();
+        RequestCallback requestCallback = request -> request.getHeaders().add(HttpHeaders.AUTHORIZATION, "Bearer " + customer.getToken());
 
         try {
             log.info(String.format("Send request on %s", url));
-            File execute = restTemplate.execute(url, HttpMethod.GET, null, clientHttpResponse -> {
+            File execute = restTemplate.execute(url, HttpMethod.GET, requestCallback, clientHttpResponse -> {
                 String destFileName = clientHttpResponse.getHeaders().getContentDisposition().getFilename();
                 String concat = FilenameUtils.concat(savePath, destFileName);
                 log.info(String.format("Destination file path: %s", concat));
@@ -126,8 +129,7 @@ public class RequestService {
             });
             if (execute != null && execute.exists()) {
                 log.info("File successfully saved!");
-            }
-            else {
+            } else {
                 log.error("FILE NOT SAVED");
             }
         } catch (Exception e) {
@@ -135,7 +137,6 @@ public class RequestService {
         }
         log.info("<<< getFile");
     }
-
 
 
     private static String removeUTF8BOM(String s) {

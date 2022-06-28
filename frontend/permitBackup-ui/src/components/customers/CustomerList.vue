@@ -1,11 +1,11 @@
 <template>
   <router-view></router-view>
-<!--  <div>-->
-<!--    <PrDataTable :value="customers">-->
-<!--      <PrColumn field="dbName" header="Name" />-->
-<!--      <PrColumn field="url" header="URL" />-->
-<!--    </PrDataTable>-->
-<!--  </div>-->
+  <div>
+    <PrDataTable :value="customers">
+      <PrColumn field="dbName" header="Name" />
+      <PrColumn field="url" header="URL" />
+    </PrDataTable>
+  </div>
 </template>
 <script>
 import apiCustomer from "../../api/apiCustomer";

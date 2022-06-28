@@ -13,6 +13,7 @@ buildscript {
 
 plugins {
     id "com.moowork.node" version "1.3.1"
+    id "com.palantir.docker" version "0.34.0"
 }
 
 apply plugin: 'java'
@@ -21,7 +22,7 @@ apply plugin: 'io.spring.dependency-management'
 
 
 group = 'meow.soft'
-version = '0.0.1-SNAPSHOT'
+//version = '0.0.1'
 sourceCompatibility = '1.8'
 
 
@@ -34,14 +35,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-amqp'
+    implementation 'org.springframework.boot:spring-boot-actuator'
     implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
     implementation 'io.springfox:springfox-boot-starter:3.0.0'
     implementation 'io.springfox:springfox-swagger-ui:3.0.0'
     implementation 'org.json:json:20220320'
     implementation 'commons-io:commons-io:2.11.0'
-    implementation 'org.springframework.boot:spring-boot-actuator'
-    //implementation 'org.springframework.boot:spring-boot-actuator-autoconfigure'
-
 
     compileOnly 'org.projectlombok:lombok:1.18.24'
 
@@ -57,5 +56,15 @@ dependencies {
     testImplementation 'com.h2database:h2'
 }
 
+task copyFrontend(type: Copy) {
+    from '/frontend/permitBackup-ui/dist'
+    into 'src/main/resources/static'
+}
 
-archivesBaseName = 'PermitBackupService'
+docker {
+    name "permit:${project.version}"
+    dockerfile file('Dockerfile')
+    files 'app.jar'
+}
+
+archivesBaseName = 'app'
