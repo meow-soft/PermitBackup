@@ -37,7 +37,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-amqp'
     implementation 'org.springframework.boot:spring-boot-actuator'
     implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
-    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+    //implementation 'io.springfox:springfox-boot-starter:3.0.0'
     implementation 'io.springfox:springfox-swagger-ui:3.0.0'
     implementation 'org.json:json:20220320'
     implementation 'commons-io:commons-io:2.11.0'
@@ -58,7 +58,7 @@ dependencies {
 
 task copyFrontend(type: Copy) {
     from '/frontend/permitBackup-ui/dist'
-    into 'src/main/resources/static'
+    into 'src/main/resources/public'
 }
 
 docker {

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/history")
+@RequestMapping("/api/history")
 @RequiredArgsConstructor
 public class HistoryController {
     private final HistoryService historyService;

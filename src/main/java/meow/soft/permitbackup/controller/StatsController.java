@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/stats")
+@RequestMapping("/api/stats")
 @RequiredArgsConstructor
 public class StatsController {
     private final StatsService statsService;
