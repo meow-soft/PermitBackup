@@ -1,0 +1,5 @@
+services:
+  backuper:
+    build: .
+    environment:
+      - spring.sql.init.mode=always

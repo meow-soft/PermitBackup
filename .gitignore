@@ -69,3 +69,5 @@ yarn-error.log*
 .vscode/*
 /frontend/node_modules/
 /src/main/resources/public/
+
+.env

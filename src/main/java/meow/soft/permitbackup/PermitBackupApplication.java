@@ -17,8 +17,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-//@EnableWebMvc
-//@EnableSwagger2
 public class PermitBackupApplication {
     static final String topicExchangeName = "exchange";
     static final String queueName = "Permit";

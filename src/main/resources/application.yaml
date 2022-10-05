@@ -1,0 +1,30 @@
+mq:
+  username: bztgnhov
+  password: ${MQ_PASSWORD}
+logging:
+  file:
+    name: logs/PermitBackup.log
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  datasource:
+    driverClassName: org.h2.Driver
+    password: ${DB_PASSWORD}
+    username: sa
+    url: jdbc:h2:file:./src/main/resources/configDb
+  h2:
+    console:
+      path: /h2-console
+      enabled: 'true'
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.H2Dialect
+  sql:
+    init:
+      mode: never
+permit:
+  password: ${PERMIT_PASSWORD}
+  username: Admin
+server:
+  port: '8080'
