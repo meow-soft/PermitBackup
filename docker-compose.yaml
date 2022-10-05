@@ -2,7 +2,20 @@ version: "3.9"
 services:
   backuper:
     build: .
+    environment:
+      - spring.datasource.url=jdbc:postgresql://${DB_NAME}:5432/${DB_NAME}
+      - spring.datasource.password=${DB_PASSWORD}
+      - spring.datasource.username=${DB_USER}
+      - mq.password=${MQ_PASSWORD}
+      - permit.password=${PERMIT_PASSWORD}
+      - saveFolder=${SAVE_PATH}
+    depends_on:
+      - db
+    restart: always
+    ports:
+      - "8088:8080"
   db:
+    container_name: ${DB_NAME}
     image: postgres:14.5
     ports:
       - "5431:5432"
