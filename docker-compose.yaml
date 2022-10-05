@@ -1,5 +1,12 @@
+version: "3.9"
 services:
   backuper:
     build: .
+  db:
+    image: postgres:14.5
+    ports:
+      - "5431:5432"
     environment:
-      - spring.sql.init.mode=always
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}

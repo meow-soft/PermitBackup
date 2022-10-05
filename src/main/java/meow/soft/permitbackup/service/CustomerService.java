@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import meow.soft.permitbackup.domain.Customer;
 import meow.soft.permitbackup.repo.CustomerRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -17,6 +18,7 @@ public class CustomerService {
         return customerRepository.findById(customerId).orElse(null);
     }
 
+    @Transactional
     public void save(Customer customer) {
         customerRepository.save(customer);
     }

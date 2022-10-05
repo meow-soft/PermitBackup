@@ -16,9 +16,11 @@ import org.springframework.util.StreamUtils;
 import org.springframework.web.client.RequestCallback;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -31,16 +33,16 @@ public class RequestService {
     public static final String API_REMOTE_BACKUP_GET = "/api/RemoteBackup/Get";
     public static final String API_REMOTE_BACKUP_CREATE_BACKUP_MQ = "/api/RemoteBackup/CreateBackupMq";
     public static final String MVC_PUBLIC_AUTH_LOGON = "/api/Auth/v1/login";
-    private static final String SAVE_FOLDER_KEY = "saveFolder";
     public static final String UTF8_BOM = "\uFEFF";
 
     @Value("${permit.username}")
     private String login;
     @Value("${permit.password}")
     private String pass;
+    @Value("${saveFolder}")
+    private String saveFolder;
 
     private final CustomerService customerService;
-    private final ConfigService configService;
 
     public void getToken(Customer customer) {
         log.info(String.format(">>> GetToken for customer %s", customer.getDbName()));
@@ -106,8 +108,8 @@ public class RequestService {
         if (customer.getToken() == null || customer.getToken().isEmpty()) {
             getToken(customer);
         }
-        String savePath = configService.getByKey(SAVE_FOLDER_KEY).getValue();
-        if (savePath == null || savePath.isEmpty()) {
+
+        if (saveFolder == null || saveFolder.isEmpty()) {
             log.error("Save Path is not configured!");
             log.info("<<< getFile");
             return;
@@ -121,10 +123,13 @@ public class RequestService {
             log.info(String.format("Send request on %s", url));
             File execute = restTemplate.execute(url, HttpMethod.GET, requestCallback, clientHttpResponse -> {
                 String destFileName = clientHttpResponse.getHeaders().getContentDisposition().getFilename();
-                String concat = FilenameUtils.concat(savePath, destFileName);
+                String concat = FilenameUtils.concat(saveFolder, destFileName);
                 log.info(String.format("Destination file path: %s", concat));
                 File ret = new File(concat);
                 StreamUtils.copy(clientHttpResponse.getBody(), Files.newOutputStream(ret.toPath()));
+                customer.setFilePath(concat);
+                customer.setUpdated(LocalDateTime.now());
+                customerService.save(customer);
                 return ret;
             });
             if (execute != null && execute.exists()) {
@@ -144,5 +149,10 @@ public class RequestService {
             s = s.substring(1);
         }
         return s;
+    }
+
+    @PostConstruct
+    public void check() {
+        log.info(saveFolder);
     }
 }

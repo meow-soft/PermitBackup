@@ -3,19 +3,23 @@ package meow.soft.permitbackup.domain;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import meow.soft.permitbackup.repo.CustomerRepository;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Table
 @Entity
 @Setter
 @Getter
 @NoArgsConstructor
-public class Customer  implements Serializable, GenericEntity<Customer>{
+@SQLDelete(sql = "UPDATE customer SET is_active = true WHERE id=?")
+@Where(clause = "is_active=false")
+public class Customer implements Serializable, GenericEntity<Customer> {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(nullable = false, unique = true)
     private String dbName;
@@ -26,6 +30,10 @@ public class Customer  implements Serializable, GenericEntity<Customer>{
     @Column
     private String token;
 
+    private LocalDateTime updated;
+
+    private String filePath;
+
     public Customer(String dbName, String url) {
         this.dbName = dbName;
         this.url = url;
@@ -33,7 +41,7 @@ public class Customer  implements Serializable, GenericEntity<Customer>{
     }
 
     @Override
-    public Long getId(){
+    public Long getId() {
         return this.id;
     }
 
@@ -50,5 +58,13 @@ public class Customer  implements Serializable, GenericEntity<Customer>{
         Customer newInstance = new Customer();
         newInstance.update(this);
         return newInstance;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "dbName='" + dbName + '\'' +
+                ", url='" + url + '\'' +
+                '}';
     }
 }
