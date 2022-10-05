@@ -35,6 +35,7 @@ public class MqService {
                 Customer customer = customerService.getCustomer(backupServiceResponse.getCustomerId());
                 if (backupServiceResponse.getResult() == 0) {
                     if (customer != null) {
+                        customer.setErrorMessage(null);
                         requestService.getFile(backupServiceResponse.getFile(), customer);
                     } else throw new Exception("Customer not found!");
                 } else {
