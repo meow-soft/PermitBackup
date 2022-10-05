@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @SQLDelete(sql = "UPDATE customer SET is_active = true WHERE id=?")
-@Where(clause = "is_active=false")
+@Where(clause = "is_active=true")
 public class Customer implements Serializable, GenericEntity<Customer> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +33,9 @@ public class Customer implements Serializable, GenericEntity<Customer> {
     private LocalDateTime updated;
 
     private String filePath;
+
+    @Column(name = "error_message")
+    private String errorMessage;
 
     public Customer(String dbName, String url) {
         this.dbName = dbName;

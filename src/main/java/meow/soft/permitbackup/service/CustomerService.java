@@ -29,6 +29,7 @@ public class CustomerService {
 
     @PostConstruct
     public void init() {
-        customerRepository.findAll().forEach(System.out::println);
+        List<Customer> all = customerRepository.findAll();
+        all.forEach(System.out::println);
     }
 }

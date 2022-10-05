@@ -6,7 +6,7 @@ logging:
     name: logs/PermitBackup.log
 spring:
   config:
-    import: optional:file:.env[.properties]
+    import: optional:file:.env.local[.properties]
   datasource:
     driverClassName: org.postgresql.Driver
     password: ${DB_PASSWORD}

@@ -6,11 +6,10 @@ import meow.soft.permitbackup.domain.Customer;
 import org.apache.commons.io.FilenameUtils;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.*;
-import org.springframework.http.client.ClientHttpRequest;
-import org.springframework.http.client.ClientHttpRequestExecution;
-import org.springframework.http.client.ClientHttpRequestInterceptor;
-import org.springframework.http.client.ClientHttpResponse;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.client.RequestCallback;
@@ -20,9 +19,9 @@ import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
 
 
 @Service
@@ -69,7 +68,6 @@ public class RequestService {
         }
 
         String body = removeUTF8BOM(responseEntity.getBody());
-        System.out.println(body);
         JSONObject jo = new JSONObject(body.trim());
         String token = jo.get("authToken").toString();
         customer.setToken(token);
@@ -113,6 +111,19 @@ public class RequestService {
             log.error("Save Path is not configured!");
             log.info("<<< getFile");
             return;
+        }
+        else {
+            Path folder = Paths.get(saveFolder);
+
+            if (!Files.exists(folder)) {
+                log.info("Create folder " + folder);
+                try {
+                    Files.createDirectories(folder);
+                } catch (IOException e) {
+                    log.error("error on create folder", e);
+                    return;
+                }
+            }
         }
         String url = customer.getUrl() + API_REMOTE_BACKUP_GET + "/" + filenameB64;
 

@@ -32,11 +32,14 @@ public class MqService {
             BackupServiceResponse backupServiceResponse = objectMapper.readValue(message, BackupServiceResponse.class);
             log.info(String.format("Response received: %s", backupServiceResponse));
             if (backupServiceResponse != null) {
+                Customer customer = customerService.getCustomer(backupServiceResponse.getCustomerId());
                 if (backupServiceResponse.getResult() == 0) {
-                    Customer customer = customerService.getCustomer(backupServiceResponse.getCustomerId());
                     if (customer != null) {
                         requestService.getFile(backupServiceResponse.getFile(), customer);
                     } else throw new Exception("Customer not found!");
+                } else {
+                    customer.setErrorMessage(backupServiceResponse.getMessage());
+                    customerService.save(customer);
                 }
             }
         } catch (Exception e) {

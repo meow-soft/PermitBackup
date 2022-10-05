@@ -20,5 +20,26 @@
 
     </changeSet>
 
+    <changeSet id="2" author="ybogdanov">
+        <addColumn tableName="customer">
+            <column name="error_message" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+
+
+    <changeSet id="3" author="ybogdanov">
+        <sql>
+            insert into Customer (db_name, url, is_active) values ('LaMesa', 'https://h9.maintstar.co/LaMesa', true);
+            insert into Customer (db_name, url, is_active) values ('TinleyPark', 'https://h9.maintstar.co/TinleyPark', true);
+            insert into Customer (db_name, url, is_active) values ('PalmSprings', 'https://h3.maintstar.co/PalmSprings', true);
+            insert into Customer (db_name, url, is_active) values ('MesaCounty', 'https://h9.maintstar.co/MesaCounty', true);
+            insert into Customer (db_name, url, is_active) values ('PlantCity', 'https://h8.maintstar.co/PlantCity', true);
+            insert into Customer (db_name, url, is_active) values ('Waukegan', 'https://h9.maintstar.co/Waukegan', true);
+            insert into Customer (db_name, url, is_active) values ('AlamedaTideMark', 'https://acpermit.acgov.org/Permit', true);
+            insert into Customer (db_name, url, is_active) values ('NavajoCounty', 'https://h3.maintstar.co/NavajoCounty', true);
+            insert into Customer (db_name, url, is_active) values ('Demo', 'https://h3.maintstar.co/Demo', true);
+        </sql>
+    </changeSet>
+
 
 </databaseChangeLog>
