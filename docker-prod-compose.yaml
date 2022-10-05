@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   backuper:
-    build: .
+    image: wonderkot/backuper:latest
     environment:
       - spring.datasource.url=jdbc:postgresql://${DB_NAME}:5432/${DB_NAME}
       - spring.datasource.password=${DB_PASSWORD}
