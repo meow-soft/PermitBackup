@@ -1,5 +1,6 @@
 package meow.soft.permitbackup.view;
 
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -48,18 +49,8 @@ public class MainView extends HorizontalLayout {
                 "dd.MM.yyyy HH:mm:ss")
         ).setHeader("Update At");
         grid.addColumn(Customer::getErrorMessage).setHeader("Last Error");
-        grid.addColumn(new ComponentRenderer<>(customer -> {
-            if (customer.getFilePath() == null || customer.getFilePath().isEmpty())
-                return new Text("No File");
 
-            File file = new File(customer.getFilePath());
-            StreamResource streamResource = new StreamResource(file.getName(), () -> getStream(file));
-
-            Anchor link = new Anchor(streamResource, String.format("%s (%d MB)", file.getName(),
-                    (int) file.length() / 1024 / 1024));
-            link.getElement().setAttribute("download", true);
-            return link;
-        }));
+        grid.addColumn(new ComponentRenderer<>(this::getDownloadFileLink));
 
         Grid.Column<Customer> editColumn = grid.addComponentColumn(customer -> {
             Button editButton = new Button("Edit");
@@ -81,6 +72,21 @@ public class MainView extends HorizontalLayout {
 
         add(grid);
 
+    }
+
+    private Component getDownloadFileLink(Customer customer) {
+        if (customer.getFilePath() == null || customer.getFilePath().isEmpty())
+            return new Text("No File");
+
+        File file = new File(customer.getFilePath());
+        if (!file.exists())
+            return new Text("No File");
+        StreamResource streamResource = new StreamResource(file.getName(), () -> getStream(file));
+
+        Anchor link = new Anchor(streamResource, String.format("%s (%d MB)", file.getName(),
+                (int) file.length() / 1024 / 1024));
+        link.getElement().setAttribute("download", true);
+        return link;
     }
 
     private InputStream getStream(File file) {
