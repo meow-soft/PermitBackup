@@ -26,3 +26,7 @@ server:
   port: '8080'
 saveFolder:
   ${SAVE_PATH}
+vaadin:
+  launch-browser: true
+  whitelisted-packages: meow/soft/permitbackup/view
+  url-mapping: /home/*
